@@ -10,11 +10,11 @@ var gravity: int = 35
 func _physics_process(_delta: float) -> void:
 	
 	if Input.is_action_pressed("move_left"):
-		velocity.x = -speed
+		velocity.x = lerp(velocity.x, -speed, 0.2) # lerp here makes the item gradually speed up
 	elif Input.is_action_pressed("move_right"):
-		velocity.x = speed
+		velocity.x = lerp(velocity.x, speed, 0.2)
 	else:
-		velocity.x = 0
+		velocity.x = lerp(velocity.x, 0, 0.2) # lerp makes the item gradually stop
 	
 	velocity.y += gravity
 	

@@ -12,5 +12,5 @@ func _ready():
 func _on_PauseButton_pressed():
 	pauseScreenScene = load("res://scenes/PauseScreen.tscn") # load scene in signal so that the scene won't be null after it's deleted
 	pauseScreen = pauseScreenScene.instance()
-	add_child(pauseScreen) # pause screen will show up
-	get_tree().set_pause(true) # pause game
+	add_child(pauseScreen)
+	get_tree().set_pause(true)

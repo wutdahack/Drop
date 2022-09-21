@@ -1,15 +1,15 @@
 extends Node2D
 
 var rng: RandomNumberGenerator = RandomNumberGenerator.new()
-var hasUpdatedScoreForFirstTime: bool = false
 onready var rainDropScene: PackedScene = preload("res://scenes/RainDrop.tscn")
 onready var bucketScene: PackedScene = preload("res://scenes/Bucket.tscn")
 onready var bucket: CollectsWater = bucketScene.instance()
 onready var screen: Rect2 = get_tree().get_root().get_visible_rect()
 onready var dropTimer: Timer = Timer.new()
 
-class_name Game
 # onready variables are initialised after the ready method is called
+
+class_name Game
 
 func _ready():
 	setup_player(bucket)
