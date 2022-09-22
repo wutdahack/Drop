@@ -25,7 +25,7 @@ func add_rain_drop() -> void:
 	rainDrop.position.x = rng.randf_range(screen.position.x, screen.size.x) # get a random number between 0 and 1280
 	rainDrop.position.y = 0 # make the position the top of the screen
 	add_child(rainDrop)
-	move_child(rainDrop, get_child_count()) # add raindrop to the front of screen
+	move_child(rainDrop, $ExtraGrassFront.get_index()) # add raindrop behind the front grass
 	dropTimer.start(5.0)
 
 func setup_player(var waterCollector: CollectsWater) -> void:
