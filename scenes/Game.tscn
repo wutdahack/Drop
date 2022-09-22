@@ -42,7 +42,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 640, 50 )
+extents = Vector2( 640, 27 )
 
 [sub_resource type="TileSet" id=5]
 0/name = "puddle_1.png 0"
@@ -123,19 +123,20 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Scene/GrassStatic"]
-position = Vector2( 640, 50 )
+position = Vector2( 640, 73 )
 shape = SubResource( 1 )
 
 [node name="Puddles" type="TileMap" parent="Scene"]
+position = Vector2( 0, -30 )
 tile_set = SubResource( 5 )
 cell_size = Vector2( 128, 64 )
 format = 1
 tile_data = PoolIntArray( 655361, 0, 0, 655365, 536870912, 0, 655369, 0, 0 )
 
-[node name="ExtraGrass" type="TileMap" parent="."]
+[node name="ExtraGrass" type="TileMap" parent="Scene"]
 tile_set = SubResource( 2 )
 format = 1
-tile_data = PoolIntArray( 589825, 0, 0, 589828, 536870912, 0, 589831, 536870912, 0, 589837, 0, 0, 589840, 0, 0, 589843, 536870912, 0 )
+tile_data = PoolIntArray( 589825, 0, 0, 589828, 536870912, 0, 589831, 536870912, 0, 589837, 0, 0, 589840, 0, 0 )
 
 [node name="RainSound" type="AudioStreamPlayer" parent="."]
 pause_mode = 2

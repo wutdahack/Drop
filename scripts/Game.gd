@@ -30,7 +30,7 @@ func add_rain_drop() -> void:
 
 func setup_player(var waterCollector: CollectsWater) -> void:
 	add_child_below_node($Scene, waterCollector)
-	waterCollector.position = Vector2(screen.size.x / 2 ,571)
+	waterCollector.position = Vector2(screen.size.x / 2, 615)
 
 func setupTimer() -> void:
 	add_child(dropTimer)
