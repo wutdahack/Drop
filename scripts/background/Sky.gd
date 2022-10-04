@@ -1,9 +1,10 @@
 extends Node2D
 
-class_name SkyBase
-
 onready var screen: Rect2 = get_tree().get_root().get_visible_rect()
-var colour: Color
+onready var colour: Color
 
-func _draw():
+func _ready() -> void:
+	colour = Color(0.41, 0.68, 0.89, 1) # a light blue
+
+func _draw() -> void:
 	draw_rect(Rect2(screen.position, screen.size), colour)

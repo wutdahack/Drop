@@ -6,6 +6,7 @@ onready var screen: Rect2 = get_tree().get_root().get_visible_rect()
 var velocity: Vector2 = Vector2.ZERO
 var speed: int = 400
 var gravity: int = 35
+const NO_SPEED: int = 0
 
 func _physics_process(_delta: float) -> void:
 	
@@ -14,7 +15,7 @@ func _physics_process(_delta: float) -> void:
 	elif Input.is_action_pressed("move_right"):
 		velocity.x = lerp(velocity.x, speed, 0.2)
 	else:
-		velocity.x = lerp(velocity.x, 0, 0.2) # lerp makes the item gradually stop
+		velocity.x = lerp(velocity.x, NO_SPEED, 0.2) # lerp makes the item gradually stop
 	
 	velocity.y += gravity
 	

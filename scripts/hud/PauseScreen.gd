@@ -1,10 +1,10 @@
 extends Control
 
-onready var confirmationScreenScene: PackedScene
-onready var confirmationScreen: Control
+var confirmationScreenScene: PackedScene
+var confirmationScreen: Control
 
 func _on_ResetButton_pressed():
-	confirmationScreenScene = load("res://scenes/ConfirmationScreen.tscn")
+	confirmationScreenScene = load("res://scenes/hud/ConfirmationScreen.tscn")
 	confirmationScreen = confirmationScreenScene.instance()
 	get_parent().add_child(confirmationScreen)
 	queue_free()

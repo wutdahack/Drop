@@ -1,17 +1,15 @@
 extends Node2D
 
-var rng: RandomNumberGenerator = RandomNumberGenerator.new()
-onready var rainDropScene: PackedScene = preload("res://scenes/RainDrop.tscn")
-onready var bucketScene: PackedScene = preload("res://scenes/Bucket.tscn")
+# onready variables are initialised after the ready method is called
+onready var rainDropScene: PackedScene = preload("res://scenes/drops/RainDrop.tscn")
+onready var bucketScene: PackedScene = preload("res://scenes/water_collectors/Bucket.tscn")
 onready var bucket: CollectsWater = bucketScene.instance()
 onready var screen: Rect2 = get_tree().get_root().get_visible_rect()
 onready var dropTimer: Timer = Timer.new()
+onready var rng: RandomNumberGenerator = RandomNumberGenerator.new()
+const TIMER_WAIT_TIME: float = 5.0
 
-# onready variables are initialised after the ready method is called
-
-class_name Game
-
-func _ready():
+func _ready() -> void:
 	setup_player(bucket)
 	GlobalVariables.scoreLabel = get_node("HUD/ScorePanel/VBoxContainer/ScoreNumText")
 	GlobalVariables.updateScore()
@@ -26,14 +24,16 @@ func add_rain_drop() -> void:
 	rainDrop.position.y = 0 # make the position the top of the screen
 	add_child(rainDrop)
 	move_child(rainDrop, $ExtraGrassFront.get_index()) # add raindrop behind the front grass
-	dropTimer.start(5.0)
+	dropTimer.start(TIMER_WAIT_TIME)
 
 func setup_player(var waterCollector: CollectsWater) -> void:
 	add_child_below_node($Scene, waterCollector)
-	waterCollector.position = Vector2(screen.size.x / 2, 615)
+	waterCollector.position = $WaterCollectorPosition.position
 
 func setupTimer() -> void:
 	add_child(dropTimer)
+	
+	# warning-ignore:return_value_discarded
 	dropTimer.connect("timeout", self, "_on_AddDropTimer_timeout")
 
 func _on_AddDropTimer_timeout():

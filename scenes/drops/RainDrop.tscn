@@ -1,0 +1,48 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://assets/textures/rain_drops/drop/drop.png" type="Texture" id=1]
+[ext_resource path="res://assets/sounds/drop.mp3" type="AudioStream" id=2]
+[ext_resource path="res://assets/textures/rain_drops/drop/rain_drop_soak0004.png" type="Texture" id=3]
+[ext_resource path="res://assets/textures/rain_drops/drop/rain_drop_soak0002.png" type="Texture" id=4]
+[ext_resource path="res://assets/textures/rain_drops/drop/rain_drop_soak0003.png" type="Texture" id=5]
+[ext_resource path="res://scripts/drops/RainDrop.gd" type="Script" id=6]
+[ext_resource path="res://assets/textures/rain_drops/drop/rain_drop_soak0001.png" type="Texture" id=7]
+[ext_resource path="res://assets/textures/rain_drops/drop/rain_drop_soak0000.png" type="Texture" id=8]
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "normal",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 8 ), ExtResource( 7 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 3 ) ],
+"loop": false,
+"name": "soak",
+"speed": 10.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 14.0
+height = 30.0
+
+[node name="RainDrop" type="Area2D"]
+collision_layer = 2
+collision_mask = 5
+script = ExtResource( 6 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 2 )
+animation = "normal"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 3.14159
+shape = SubResource( 1 )
+
+[node name="DropSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+pitch_scale = 0.9
+
+[connection signal="body_entered" from="." to="." method="_on_RainDrop_collected"]
+[connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
+[connection signal="finished" from="DropSound" to="." method="_on_DropSound_finished"]

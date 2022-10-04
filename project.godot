@@ -12,45 +12,28 @@ _global_script_classes=[ {
 "base": "KinematicBody2D",
 "class": "CollectsWater",
 "language": "GDScript",
-"path": "res://scripts/CollectsWater.gd"
-}, {
-"base": "Node2D",
-"class": "Game",
-"language": "GDScript",
-"path": "res://scripts/Game.gd"
-}, {
-"base": "Area2D",
-"class": "RainDrop",
-"language": "GDScript",
-"path": "res://scripts/RainDrop.gd"
-}, {
-"base": "Node2D",
-"class": "SkyBase",
-"language": "GDScript",
-"path": "res://scripts/SkyBase.gd"
+"path": "res://scripts/water_collectors/CollectsWater.gd"
 } ]
 _global_script_class_icons={
-"CollectsWater": "",
-"Game": "",
-"RainDrop": "",
-"SkyBase": ""
+"CollectsWater": ""
 }
 
 [application]
 
 config/name="Drop"
-run/main_scene="res://scenes/Game.tscn"
+run/main_scene="res://scenes/game/Game.tscn"
 config/icon="res://assets/textures/bucket/bucket.png"
 
 [autoload]
 
-GlobalVariables="*res://scripts/GlobalVariables.gd"
+GlobalVariables="*res://scripts/game/GlobalVariables.gd"
 
 [display]
 
 window/size/width=1280
 window/size/height=720
-window/size/resizable=false
+window/stretch/mode="2d"
+window/stretch/aspect="keep"
 
 [input]
 
